@@ -25,6 +25,12 @@ body {
   background-color: var(--dark-bg);
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
 h1,
 h2,
 h3 {
@@ -734,6 +740,26 @@ footer {
 
   .sobre-image::after {
     display: none;
+  }
+
+  .sobre-image {
+    position: relative;
+    width: 100%; 
+    max-width: 300px;
+    margin: 0 auto; 
+  }
+
+  .sobre-image img {
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--primary-color);
+    border-radius: 15px; 
+    box-shadow: 0 0 15px rgba(196, 154, 105, 0.7); 
+    transition: box-shadow 0.3s ease; 
+  }
+
+  .sobre-image img:hover {
+    box-shadow: 0 0 25px rgba(196, 154, 105, 1); 
   }
 
   .contato-section {
