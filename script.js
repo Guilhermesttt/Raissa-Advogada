@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Formulário de contato
+  // Formulário de contato ajustado
 const form = document.querySelector('.contato-form');
 if (form) {
   form.addEventListener('submit', function(e) {
@@ -49,10 +49,10 @@ if (form) {
     const mensagem = form.querySelector('[name="mensagem"]').value;
 
     // Montar mensagem para o WhatsApp
-    const telefoneDestino = '5582981804464'; // Número com código do país
+    const telefoneDestino = '558281804464'; // Número no formato internacional
     const texto = `Olá! Tenho interesse:\n\nNome: ${nome}\nEmail: ${email}\nMensagem: ${mensagem}`;
     
-    // URL para WhatsApp (API compatível com mobile)
+    // URL ajustada para WhatsApp
     const urlWhatsapp = `https://wa.me/${telefoneDestino}?text=${encodeURIComponent(texto)}`;
 
     // Feedback visual
@@ -60,14 +60,20 @@ if (form) {
     button.style.opacity = '0.7';
     button.disabled = true;
 
-    // Abrir o WhatsApp após um pequeno atraso
+    // Detectar se é mobile e abrir o WhatsApp de forma direta
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     setTimeout(() => {
-      window.open(urlWhatsapp, '_blank');
+      if (isMobile) {
+        // Forçar abertura direta no app em dispositivos móveis
+        window.location.href = urlWhatsapp; // Substitui window.open
+      } else {
+        window.open(urlWhatsapp, '_blank'); // Desktop: abre em nova aba
+      }
       button.innerHTML = originalText;
       button.style.opacity = '1';
       button.disabled = false;
       form.reset();
-    }, 1500);
+    }, 1000); // Reduzi para 1000ms para feedback mais rápido
   });
 }
 
