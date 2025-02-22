@@ -82,13 +82,13 @@ nav.scrolled {
 .nav-links {
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Alinha os links à direita em telas maiores */
-  background-color: transparent; /* Remove o fundo escuro em telas maiores */
+  justify-content: flex-end; 
+  background-color: transparent; 
   padding: 0;
-  position: static; /* Remove o posicionamento fixo em telas maiores */
-  width: auto; /* Remove a largura fixa de 100% */
-  height: auto; /* Remove a altura fixa de 100vh */
-  backdrop-filter: none; /* Remove o efeito de blur em telas maiores */
+  position: static; 
+  width: auto; 
+  height: auto;
+  backdrop-filter: none;
 }
 
 .nav-links a {
@@ -116,7 +116,7 @@ nav.scrolled {
 }
 
 .mobile-menu-btn-container {
-  display: none; /* Oculta o botão em telas maiores por padrão */
+  display: none; 
 }
 
 /* Header */
@@ -240,7 +240,7 @@ header {
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: none; /* Removido ou ajustado para nenhuma transição, tornando o movimento mais instantâneo */
+  transition: none; 
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(196, 154, 105, 0.1);
@@ -321,7 +321,7 @@ header {
 
   .area-card {
     padding: 2.5rem 1.5rem;
-    transition: none; /* Removido ou ajustado para nenhuma transição */
+    transition: none; 
   }
 
   .area-card:hover {
@@ -358,7 +358,7 @@ header {
 
   .area-card {
     padding: 2rem 1.2rem;
-    transition: none; /* Removido ou ajustado para nenhuma transição */
+    transition: none; 
   }
 
   .area-card:hover {
@@ -406,7 +406,7 @@ header {
   bottom: -20px;
   border: 2px solid var(--primary-color);
   z-index: -1;
-  animation: glow 3s ease-in-out infinite; /* Adiciona animação de glow */
+  animation: glow 3s ease-in-out infinite; 
 }
 
 .sobre-image img {
@@ -695,7 +695,7 @@ footer {
   }
 
   .nav-links {
-    display: none;
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -708,7 +708,7 @@ footer {
   }
 
   .nav-links.active {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -719,6 +719,18 @@ footer {
     font-size: 1.1rem;
     color: white;
     text-decoration: none;
+    position: relative;
+  }
+
+  .nav-links a.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
   }
 
   .header-content h1 {
@@ -738,28 +750,36 @@ footer {
     gap: 3rem;
   }
 
-  .sobre-image::after {
-    display: none;
-  }
 
   .sobre-image {
     position: relative;
     width: 100%; 
-    max-width: 300px;
+    max-width: 300px; 
     margin: 0 auto; 
+    overflow: visible; 
+  }
+  
+  .sobre-image::after {
+    content: '';
+    position: absolute;
+    width: 120%; 
+    height: 96%; 
+    border: 3px solid var(--primary-color);
+    border-radius: 15px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 0; 
   }
 
   .sobre-image img {
-    width: 100%;
+    width: 120%; 
     height: auto;
-    border: 3px solid var(--primary-color);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
     border-radius: 15px; 
-    box-shadow: 0 0 15px rgba(196, 154, 105, 0.7); 
     transition: box-shadow 0.3s ease; 
-  }
-
-  .sobre-image img:hover {
-    box-shadow: 0 0 25px rgba(196, 154, 105, 1); 
+    z-index: 1; 
   }
 
   .contato-section {
@@ -885,7 +905,7 @@ footer {
     top: 20px;
     right: 20px;
     z-index: 1000;
-    display: block;
+    display: block; /* Botão visível no mobile */
   }
 
   .mobile-menu-btn {
@@ -894,7 +914,7 @@ footer {
     font-size: 2rem;
     color: var(--primary-color);
     cursor: pointer;
-    display: block;
+    display: block; 
   }
 
   .logo {
@@ -929,6 +949,42 @@ footer {
   .sobre-content h2,
   .contato-section h2 {
     font-size: 2.5rem;
+  }
+
+  .sobre-image {
+    position: relative;
+    width: 100%; 
+    max-width: 300px;
+    margin: 0 auto; 
+    overflow: visible; 
+  }
+  
+  .sobre-image::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 96%; 
+    border: 3px solid var(--primary-color);
+    border-radius: 15px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 0; 
+  }
+
+  .sobre-image img {
+    width: 120%; 
+    height: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
+    border-radius: 15px; 
+    transition: box-shadow 0.3s ease; 
+    z-index: 1;
+  }
+
+
+  .sobre-image img:hover {
+    box-shadow: 0 0 25px rgba(196, 154, 105, 1); 
   }
 
   .area-card {
