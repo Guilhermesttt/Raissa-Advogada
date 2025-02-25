@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active-link'));
+      link.classList.add('active-link');
       navLinks.classList.remove('active');
     });
   });
@@ -32,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Formulário de contato ajustado
   const form = document.querySelector('.contato-form');
   if (form) {
     form.addEventListener('submit', function(e) {
@@ -44,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const email = form.querySelector('[name="email"]').value;
       const mensagem = form.querySelector('[name="mensagem"]').value;
 
-      const telefoneDestino = '5582981804464';
+      const telefoneDestino = '5582981804464'; 
       const texto = `Olá! Tenho interesse:\n\nNome: ${nome}\nEmail: ${email}\nMensagem: ${mensagem}`;
+      
       const urlWhatsapp = `https://wa.me/${telefoneDestino}?text=${encodeURIComponent(texto)}`;
 
       button.innerHTML = '<span>Enviando...</span><i class="fas fa-spinner fa-spin"></i>';
@@ -55,18 +57,19 @@ document.addEventListener('DOMContentLoaded', function() {
       const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
       setTimeout(() => {
         if (isMobile) {
-          window.location.href = urlWhatsapp;
+          window.location.href = urlWhatsapp; 
         } else {
-          window.open(urlWhatsapp, '_blank');
+          window.open(urlWhatsapp, '_blank'); 
         }
         button.innerHTML = originalText;
         button.style.opacity = '1';
         button.disabled = false;
         form.reset();
-      }, 1000);
+      }, 1000); 
     });
   }
 
+  // Efeito de rolagem na navegação
   const nav = document.querySelector('nav');
   let lastScroll = 0;
 
@@ -86,32 +89,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     lastScroll = currentScroll;
-  });
-
-  const sensitivity = 30;
-  document.querySelectorAll('.area-card').forEach(card => {
-    card.style.transition = 'transform 0.1s ease-out';
-    card.style.transform = 'translateY(-15px)';
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const mouseX = e.clientX - centerX;
-      const mouseY = e.clientY - centerY;
-
-      const rotateX = (mouseY / rect.height) * sensitivity;
-      const rotateY = (mouseX / rect.width) * -sensitivity;
-
-      card.style.transform = `translateY(-15px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(-15px)';
-    });
-
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-15px)';
-    });
   });
 });
