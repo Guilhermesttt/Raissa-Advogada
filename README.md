@@ -10,7 +10,6 @@ Este é o código-fonte do nosso site institucional, desenvolvido para apresenta
 - 🌐 Navegação intuitiva  
 - 📋 Informações sobre serviços bancários e tributários  
 - 📞 Formulário de contato direto  
-- 📰 Artigos e dicas jurídicas  
 
 ## Tecnologias Utilizadas 🛠️
 - HTML5 📝  
